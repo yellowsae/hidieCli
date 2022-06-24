@@ -2,6 +2,8 @@ const program = require('commander');
 const { version } = require('./utils/constants');
 const { mapActions } = require('./utils/common');
 const path = require('path');
+const inquirer = require('inquirer');
+
 
 // 监听 --help
 program.on('--help', () => {
@@ -38,3 +40,16 @@ Reflect.ownKeys(mapActions).forEach((action) => {
 // 添加版本
 program.version(version)
        .parse(process.argv); // process.argv就是用户在命令行中传入的参数
+
+// 用户与命令行交互的工具 inquirer
+inquirer.prompt([
+       {
+              type: 'confirm',
+              name: 'test',
+              message: '你确定使用这个吗？',
+              default: true
+       }
+]).then((answers) => {
+       console.log('结果为：')
+       console.log(answers)
+})

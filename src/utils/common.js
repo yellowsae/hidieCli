@@ -1,4 +1,15 @@
 // 根据我们想要实现的功能配置执行动作，遍历产生对应的命令
+const ora = require('ora');
+
+// 封装loading效果
+const fnLoadingByOra = async (fn, message) => {
+  const spinner = ora(message);
+  spinner.start();
+  let result = await fn();
+  spinner.succeed(); // 结束loading
+  return result;
+}
+
 const mapActions = {
   // 命令项
   create: {
@@ -27,5 +38,6 @@ const mapActions = {
 
 
 module.exports = {
-  mapActions
+  mapActions,
+  fnLoadingByOra
 }
