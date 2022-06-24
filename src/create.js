@@ -5,6 +5,7 @@ const {
   fetchReopLists,
   getTagLists,
   downDir,
+  copyTempToLoclhost,
 } = require('./utils/common');
 
 
@@ -43,4 +44,5 @@ module.exports = async (projectName) => {
   console.log(`我现在选择了那个仓库？ ${repo}`);
   console.log(`仓库 ${repo}的版本信息列表：${tag}`);
   const target = await fnLoadingByOra(downDir, '下载项目中...')(repo, tag);
+  // await copyTempToLoclhost(target, projectName);
 }
