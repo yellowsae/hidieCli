@@ -28,7 +28,14 @@ module.exports = async (projectName) => {
   ]);
   let tags = await fnLoadingByOra(getTagLists, `正在链接你的选择的仓库${repo}的版本号...`)(repo);
   tags = tags.map((item) => item.name);
+  const { tag } = await inquirer.prompt([{
+    type: 'list',
+    name: 'tag',
+    message: '请选择一个该项目的版本下载',
+    choices: tags
+  }]);
+
   console.log(`我现在选择了那个仓库？ ${repo}`);
-  console.log(`仓库 ${repo}的版本信息列表：${tags}`);
+  console.log(`仓库 ${repo}的版本信息列表：${tag}`);
 
 }

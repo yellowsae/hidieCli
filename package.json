@@ -22,6 +22,7 @@
     "shelljs": "^0.8.5"
   },
   "dependencies": {
+    "download-git-repo": "^3.0.2",
     "inquirer": "^7.0.3",
     "ora": "^4.0.3"
   }
