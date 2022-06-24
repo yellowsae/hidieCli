@@ -1,5 +1,5 @@
 ### hidie-cli
 
 ```
-npm i lee-cli
+npm i hidie-cli
 ```
