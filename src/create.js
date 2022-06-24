@@ -1,6 +1,11 @@
 const axios = require('axios');
 const inquirer = require('inquirer');
-const { fnLoadingByOra, fetchReopLists, getTagLists } = require('./utils/common');
+const {
+  fnLoadingByOra,
+  fetchReopLists,
+  getTagLists,
+  downDir,
+} = require('./utils/common');
 
 
 // 1).获取仓库列表
@@ -37,5 +42,5 @@ module.exports = async (projectName) => {
 
   console.log(`我现在选择了那个仓库？ ${repo}`);
   console.log(`仓库 ${repo}的版本信息列表：${tag}`);
-
+  const target = await fnLoadingByOra(downDir, '下载项目中...')(repo, tag);
 }

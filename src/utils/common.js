@@ -1,8 +1,31 @@
 // 根据我们想要实现的功能配置执行动作，遍历产生对应的命令
 const ora = require('ora');
 const axios = require('axios');
+const { promisify } = require('util');
+const { downloadDirectory } = require('./constants');
+let downloadGit = require('download-git-repo');
 
+downloadGit = promisify(downloadGit);// 将项目下载到当前用户的临时文件夹下
 
+const downDir = async (repo, tag) => {
+  console.log(tag, 'downDir方法');
+  let project = `lxy-cli/${repo}`; //下载的项目
+  if (tag) {
+    project += `#${tag}`;
+  }
+  //     c:/users/lee/.myTemplate
+  let dest = `${downloadDirectory}/${repo}`;
+  //把项目下载当对应的目录中
+  console.log(dest, 'dest的内容。。。。。。。。。。');
+  console.log(project, 'dest的内容。。。。。。。。。。');
+  try {
+    await downloadGit(project, dest);
+  } catch (error) {
+    console.log('错误了吗？？？\n');
+    console.log(error);
+  }
+  return dest
+}
 
 // 封装loading效果
 const fnLoadingByOra = (fn, message) => async (...argv) => {
@@ -68,5 +91,6 @@ module.exports = {
   mapActions,
   fnLoadingByOra,
   getTagLists,
-  fetchReopLists
+  fetchReopLists,
+  downDir
 }

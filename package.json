@@ -19,6 +19,7 @@
     "eslint": "^8.18.0",
     "eslint-plugin-vue": "^9.1.1",
     "husky": "^8.0.1",
+    "ncp": "^2.0.0",
     "shelljs": "^0.8.5"
   },
   "dependencies": {
