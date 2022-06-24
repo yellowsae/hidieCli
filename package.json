@@ -7,9 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "hidie-cli": "bin/hidie-cli"
+    "hidie-cli": "bin/index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chalk": "^5.0.1",
+    "eslint": "^8.18.0",
+    "husky": "^8.0.1",
+    "inquirer": "^9.0.0",
+    "shelljs": "^0.8.5"
+  }
 }
